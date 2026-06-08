@@ -46,7 +46,7 @@ def load_models():
 
         # llama-3.3-70b-versatile, qwen/qwen3-32b
         # "meta-llama/llama-4-scout-17b-16e-instruct" models supports multimodality,
-        #  while I previously used "llama-3.3-70b-versatile" which is a text-only model. 
+        # previously used "llama-3.3-70b-versatile" which is a text-only model. 
 
         groq_model = ChatGroq(model="meta-llama/llama-4-scout-17b-16e-instruct", groq_api_key=os.getenv("GROQ_API_KEY"))
         
@@ -172,18 +172,13 @@ if modality_type == "Text to Text":
     # Clear chat button
     col1, col2, col3 = st.columns(3)
 
-    
-    # col1, col2, col3 = st.columns(3)   is not giving any error, but 
-    # col1 = st.columns(1) giving errors saying TypeError: 'list' object does not support the context manager protocol
-
-    #col1 = st.columns(1)
     with col1:
         if st.button("🗑️ Clear Chat"):
             st.session_state.chat_history = []
             st.rerun()
 
 # ============ TEXT TO IMAGE ============
-# OpenAI works. Gemini pending -  Unable to verify since Gemini quota exceeded. Will check once quota is back (Jun-8).
+# OpenAI works. Gemini pending.
 # Groq no feature.
 elif modality_type == "Text to Image":
     st.header("🖼️ Text to Image - Generation")
@@ -202,8 +197,7 @@ elif modality_type == "Text to Image":
     )
     
     col1, col2, col3 = st.columns(3)
-    # Need to try "Text to Image in Gemini"
-    # Gemini Text-to-Image generation is available through Google AI Studio
+   
     with col1:
         if st.button("🎨 Generate Image", use_container_width=True):
             if prompt.strip():
@@ -377,7 +371,7 @@ elif modality_type == "Image to Text":
                         else:  # OpenAI and Groq need image_url as an object
                             # https://console.groq.com/docs/vision#how-to-pass-images-from-urls-as-input
                             # "meta-llama/llama-4-scout-17b-16e-instruct" models supports multimodality,
-                            #  while I previously used "llama-3.3-70b-versatile" which is a text-only model. 
+                            #  previously used "llama-3.3-70b-versatile" which is a text-only model. 
                             message = HumanMessage(
                                 content=[
                                     {
