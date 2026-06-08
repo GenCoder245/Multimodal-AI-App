@@ -1,0 +1,14 @@
+python-dotenv
+langchain
+langchain-openai
+langchain-google-genai
+langchain-groq
+langchain-ollama
+langchain-huggingface
+openai
+google-generativeai
+google-genai
+streamlit
+streamlit-webrtc
+pillow
+requests
